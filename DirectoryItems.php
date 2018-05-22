@@ -22,6 +22,24 @@ class DirectoryItems{
         }
         
     }
+
+    // check if file is an image
+    function checkAllImages(){
+        $bln = true;
+        $extention = "";
+        $types = array("jpg", "jpeg", "gif", "png");
+
+        foreach ($this->filearray as $key => $value) {
+            $extention = substr($value, (strpos($value, ".") + 1));
+            $extention = strtolower($extention);
+
+            if (!in_array($extention, $types)) {
+                $bln = false;
+                break;
+            }
+        }
+        return $bln;
+    }
 }
 
 ?>
