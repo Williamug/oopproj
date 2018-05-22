@@ -1,6 +1,6 @@
 <?php
 
-// Creatinf a class
+// Creating a class
 class DirectoryItems{
     var $filearray = array();
 
