@@ -17,7 +17,7 @@ class DirectoryItems{
                }
                closedir($d);
         } else {
-            // error
+
             die("Must pass in a directory");
         }
         
