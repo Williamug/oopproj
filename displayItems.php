@@ -13,7 +13,7 @@
     
      require_once 'DirectoryItems.php';
      $di = new DirectoryItems('graphics');
-     $di->checkAllImages() 
+     $di->checkAllImages(); 
         or die("Not all files are Images.");
      $di->naturalCaseInsensitiveOrder();
 
