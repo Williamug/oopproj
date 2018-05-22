@@ -32,7 +32,7 @@ class DirectoryItems{
     }
 
     function getCount(){
-        return count($this->filearray)
+        return count($this->filearray);
     }
 
     // check if file is an image
