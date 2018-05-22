@@ -23,6 +23,18 @@ class DirectoryItems{
         
     }
 
+    function indexOrder(){
+        sort($this->filearray);
+    }
+
+    function naturalCaseInsensitiveOrder(){
+        natcasesort($this->filearray);
+    }
+
+    function getCount(){
+        return count($this->filearray)
+    }
+
     // check if file is an image
     function checkAllImages(){
         $bln = true;
