@@ -1,0 +1,11 @@
+{
+    "name": "Introduction OOP in PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "WilliamDk",
+            "email": "asabawilliamdk@yahoo.com"
+        }
+    ],
+    "require": {}
+}
