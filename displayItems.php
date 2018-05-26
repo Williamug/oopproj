@@ -15,10 +15,10 @@
      require_once 'ThumbnailImage.php';
      
      $di = new DirectoryItems('graphics');
-     //$di->checkAllImages()
-        //or die("Not all files are Images.");
+     $di->checkAllImages()
+        or die("Not all files are Images.");
 
-        $di = new ThumbnailImage("graphics/header.jpg");
+        //$di = new ThumbnailImage("graphics/header.jpg");
 
         $di->naturalCaseInsensitiveOrder();
 
