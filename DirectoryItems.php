@@ -2,17 +2,21 @@
 
 // Creating a class
 class DirectoryItems{
-    var $filearray = array();
+    private $filearray = array();
 
     // Creating the constructor
-    function DirectoryItems($directory){
+    public function __construct($directory, $replacechar = "_"){
+        $this->directory = $directory;
+        $this->replacechar = $replacechar;
         $d = '';
+
         if (is_dir($directory)) {
             $d = opendir($directory) 
                or die("Could not open directory");
                while (false !== ($f = readdir($d))) {
                    if (is_file("$directory/$f")) {
-                       $this->filearray[] = $f;
+                       $title = $this->createTitle($f);
+                       $this->filearray[$f] = $title;
                    }
                }
                closedir($d);
@@ -51,6 +55,15 @@ class DirectoryItems{
             }
         }
         return $bln;
+    }
+
+    private function createTitle($title){
+        // Strip extnsion
+        $title = substr($title, 0,strrpos($title, "."));
+
+        // replace word separator
+        $title = str_replace($this->replacechar, " ", $title);
+        return $title;
     }
 }
 
