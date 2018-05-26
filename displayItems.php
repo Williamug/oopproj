@@ -10,12 +10,17 @@
 </head>
 <body>
     <?php
-    
+     
      require_once 'DirectoryItems.php';
+     require_once 'ThumbnailImage.php';
+     
      $di = new DirectoryItems('graphics');
-     $di->checkAllImages()
-        or die("Not all files are Images.");
-     $di->naturalCaseInsensitiveOrder();
+     //$di->checkAllImages()
+        //or die("Not all files are Images.");
+
+        $di = new ThumbnailImage("graphics/header.jpg");
+
+        $di->naturalCaseInsensitiveOrder();
 
     //  get array
     echo '<div style="text-align:center;">';
