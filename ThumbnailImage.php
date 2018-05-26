@@ -10,7 +10,7 @@
         // Deconstructing the constructor
         public function __construct($file, $thumbnailsize=100){
             // check file
-            is_file($file) 
+            is_file($file)
                 or die("File: $file does not exit.");
             $this->initialfilesize = filesize($file);
             $this->imageproperties = getimagesize($file)
@@ -101,6 +101,16 @@
         // getting the mimetype to the browser
         public function getMimeType(){
             return $this->mimetype;
-        } 
+        }
+        
+        // improving the image quality
+        public function setQuality($quality){
+            if ($quality > 100 || $quality < 1) {
+                $quality = 75;
+                if ($this->imageproperties[2] == IMAGE_JPEG || $this->imageproperties[2] == IMAGE_PNG) {
+                    $this->quality = $quality;
+                }
+            }
+        }
 }
 ?>
