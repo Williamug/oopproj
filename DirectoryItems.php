@@ -92,7 +92,7 @@ class DirectoryItems{
         }
     }
 
-    // filter all images
+    // filter all images/ Image only
     public function imagesOnly(){
         $extension = '';
         $types = array("jpg", "jpeg", "gif", "png");
