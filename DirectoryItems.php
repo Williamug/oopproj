@@ -27,15 +27,15 @@ class DirectoryItems{
         
     }
 
-    function indexOrder(){
+    public function indexOrder(){
         sort($this->filearray);
     }
 
-    function naturalCaseInsensitiveOrder(){
+    public function naturalCaseInsensitiveOrder(){
         natcasesort($this->filearray);
     }
 
-    function getCount(){
+    public function getCount(){
         return count($this->filearray);
     }
 
