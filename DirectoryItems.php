@@ -39,26 +39,8 @@ class DirectoryItems{
         return count($this->filearray);
     }
 
-    // check if file is an image
-
-    /*function checkAllImages(){
-        $bln = true;
-        $extension = "";
-        $types = array("jpg", "jpeg", "gif", "png");
-
-        foreach ($this->filearray as $key => $value) {
-            $extension = substr($value, (strpos($value, ".") + 1));
-            $extension = strtolower($extension);
-
-            if (!in_array($extension, $types)) {
-                $bln = false;
-                break;
-            }
-        }
-        return $bln;
-    } */
-
-    // Method to generate new titles 
+   
+    // Method to generate new file titles 
     private function createTitle($title){
         // Strip extnsion
         $title = substr($title, 0, strrpos($title, "."));
@@ -68,13 +50,14 @@ class DirectoryItems{
         return $title;
     }
 
-    // Check all the file extion of the files
+    // Check all the file extension of the files
     public function checkAllSpecificTypes($extension){
         $extension = strtolower($extension);
-        $bln = "";
+        $bln = true;
+        $ext = "";
         foreach ($this->filearray as $key => $value) {
-            $txt = substr($key, (strpos($key, ".") + 1));
-            $txt = strtolower($ext);
+            $ext = substr($key, (strpos($key, ".") + 1));
+            $ext = strtolower($ext);
             if ($extension != $ext) {
                 $bln = false;
                 break;
@@ -83,13 +66,40 @@ class DirectoryItems{
         return $bln;
     }
 
-    // filter method
+    // filter method to filter all the files
     public function filter($extension){
-        $extionsion = strtolower($extionsoion);
+        $extension = strtolower($extionsoion);
         foreach ($this->filearray as $key => $value) {
             $ext = substr($key, (strpos($key, ".") + 1));
             $ext = strtolower($ext);
             if ($ext != $extension) {
+                unset($this->filearray[$key]);
+            }
+        }
+    }
+
+    // reset the file directory to show files again
+    public function removeFilter(){
+        unset($this->filearray);
+        $d = "";
+        $d = opendir($this->directory)
+            or die("Could not open the directory");
+        while (false !== ($f = readdir($d))) {
+            if(is_file("$this->directory/$f")){
+                $title = $this->createTitle($f);
+                $this->filearray[$f] = title;
+            }
+        }
+    }
+
+    // filter all images
+    public function imagesOnly(){
+        $extension = '';
+        $types = array("jpg", "jpeg", "gif", "png");
+        foreach ($this->filearray as $key => $value) {
+            $extension = substr($key, (strpos($key, ".") + 1));
+            $extension = strrolower($extension);
+            if (!in_array($extionsion, $types)) {
                 unset($this->filearray[$key]);
             }
         }
