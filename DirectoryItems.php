@@ -40,16 +40,42 @@ class DirectoryItems{
     }
 
     // check if file is an image
-    function checkAllImages(){
+
+    /*function checkAllImages(){
         $bln = true;
-        $extention = "";
+        $extension = "";
         $types = array("jpg", "jpeg", "gif", "png");
 
         foreach ($this->filearray as $key => $value) {
-            $extention = substr($value, (strpos($value, ".") + 1));
-            $extention = strtolower($extention);
+            $extension = substr($value, (strpos($value, ".") + 1));
+            $extension = strtolower($extension);
 
-            if (!in_array($extention, $types)) {
+            if (!in_array($extension, $types)) {
+                $bln = false;
+                break;
+            }
+        }
+        return $bln;
+    } */
+
+    // Method to generate new titles 
+    private function createTitle($title){
+        // Strip extnsion
+        $title = substr($title, 0, strrpos($title, "."));
+
+        // replace word separator
+        $title = str_replace($this->replacechar, " ", $title);
+        return $title;
+    }
+
+    // Check all the file extion of the files
+    public function checkAllSpecificTypes($extension){
+        $extension = strtolower($extension);
+        $bln = "";
+        foreach ($this->filearray as $key => $value) {
+            $txt = substr($key, (strpos($key, ".") + 1));
+            $txt = strtolower($ext);
+            if ($extension != $ext) {
                 $bln = false;
                 break;
             }
@@ -57,13 +83,16 @@ class DirectoryItems{
         return $bln;
     }
 
-    private function createTitle($title){
-        // Strip extnsion
-        $title = substr($title, 0,strrpos($title, "."));
-
-        // replace word separator
-        $title = str_replace($this->replacechar, " ", $title);
-        return $title;
+    // filter method
+    public function filter($extension){
+        $extionsion = strtolower($extionsoion);
+        foreach ($this->filearray as $key => $value) {
+            $ext = substr($key, (strpos($key, ".") + 1));
+            $ext = strtolower($ext);
+            if ($ext != $extension) {
+                unset($this->filearray[$key]);
+            }
+        }
     }
 }
 
